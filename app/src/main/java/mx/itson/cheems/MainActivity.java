@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     getResources().getIdentifier("opcion"+i, "id", this.getPackageName())));
        btnSeleccion.setOnClickListener(this);
         }
-
     }
 
     public void iniciar(){
@@ -47,8 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         (findViewById(R.id.opcion11)).setBackgroundResource(R.drawable.icon_pregunta);
         (findViewById(R.id.opcion12)).setBackgroundResource(R.drawable.icon_pregunta);
         Random random = new Random();
-        ubicacion = random.nextInt(11)+1;
-
+        ubicacion = 2;
+        suma = 78;
+        /*ubicacion = random.nextInt(11)+1;*/
+        for (int i = 1; i <= 12; i++) {
+            ImageButton btnSeleccion = (ImageButton) findViewById((
+                    getResources().getIdentifier("opcion" + i, "id", this.getPackageName())));
+            btnSeleccion.setEnabled(true);
+        }
     }
     int suma = 78;
     public void destapar(int opcion){
@@ -56,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (opcion == ubicacion) {
                 // Ya perdió
                 Toast.makeText(this, "¡PERMDISTE!", Toast.LENGTH_LONG).show();
-                suma = 78;
                 for (int i = 1; i <= 12; i++) {
                     // Iteramos cada carta (o botón)
                     ImageButton btnSeleccion = (ImageButton) findViewById((
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // No perdió todavía, por lo tanto se destapa solo esa carta con el cheems normal
                     ImageButton btnSeleccion = (ImageButton) findViewById((getResources().getIdentifier("opcion" + opcion, "id", this.getPackageName())));
                     btnSeleccion.setBackgroundResource(R.drawable.icon_cheems);
+                    btnSeleccion.setEnabled(false);
                 }
             }
         }
