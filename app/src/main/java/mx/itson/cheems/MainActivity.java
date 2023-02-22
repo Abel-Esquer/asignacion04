@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         iniciar();
 
         Button btnIniciar = (Button)findViewById(R.id.btnReiniciar);
@@ -45,17 +46,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         (findViewById(R.id.opcion10)).setBackgroundResource(R.drawable.icon_pregunta);
         (findViewById(R.id.opcion11)).setBackgroundResource(R.drawable.icon_pregunta);
         (findViewById(R.id.opcion12)).setBackgroundResource(R.drawable.icon_pregunta);
-
         Random random = new Random();
-        ubicacion = 1;
-        /*ubicacion = random.nextInt(11)+1;*/
+        ubicacion = random.nextInt(11)+1;
 
     }
     int suma = 78;
     public void destapar(int opcion){
+
             if (opcion == ubicacion) {
                 // Ya perdió
                 Toast.makeText(this, "¡PERMDISTE!", Toast.LENGTH_LONG).show();
+                suma = 78;
                 for (int i = 1; i <= 12; i++) {
                     // Iteramos cada carta (o botón)
                     ImageButton btnSeleccion = (ImageButton) findViewById((
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (suma == ubicacion){
                     //Si salieron todas menos la escogida, ganaste
                     Toast.makeText(this, "¡Ganaste?!", Toast.LENGTH_LONG).show();
-                    suma =78;
+                    suma = 78;
                     //Se revelan las cartas con la imagen de victoria
                     for (int i = 1; i <= 12; i++) {
                         ImageButton btnSeleccion = (ImageButton) findViewById((
@@ -88,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     btnSeleccion.setBackgroundResource(R.drawable.icon_cheems);
                 }
             }
-
         }
 
     @Override
